@@ -1,0 +1,25 @@
+---
+- name:           Install Apache
+  apt:            name=apache2
+
+- name:           Installing Apache Modules
+  apt:            name={{ item }}
+  with_items:
+    - libapache2-mod-fastcgi
+
+- name:           Enable Apache Modules
+  apache2_module: name={{ item }}
+  with_items:
+    - actions
+    - deflate
+    - expires
+    - fastcgi
+    - headers
+    - mime
+    - rewrite
+
+- name:           Configure Default Apache Site
+  template:       src=vhost.conf.j2
+                  dest=/etc/apache2/sites-available/000-default.conf
+  notify:         Restart Apache
+

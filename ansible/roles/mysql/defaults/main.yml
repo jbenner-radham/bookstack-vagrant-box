@@ -1,0 +1,6 @@
+---
+mysql:
+  database: bookshelf
+  username: root
+  password: ''
+  host:     localhost

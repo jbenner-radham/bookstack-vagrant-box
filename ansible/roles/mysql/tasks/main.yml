@@ -1,0 +1,16 @@
+---
+- name:       Install MySQL
+  apt:        name=mysql-server
+
+- name:       Install Python MySQLdb (for Ansible)
+  apt:        name=python-mysqldb
+
+- name:       Create Database User
+  mysql_user: name={{ mysql.username }}
+              password={{ mysql.password }}
+              check_implicit_admin=yes
+
+- name:       Create Database
+  mysql_db:   name={{ mysql.database }}
+              login_user={{ mysql.username }}
+              login_password={{ mysql.password }}

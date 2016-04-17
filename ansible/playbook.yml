@@ -1,0 +1,9 @@
+---
+- hosts:  all
+  become: true  # Perform the following tasks as "sudo".
+  roles:
+    - apt
+    - mysql
+    - php
+    - apache
+    - bookstack

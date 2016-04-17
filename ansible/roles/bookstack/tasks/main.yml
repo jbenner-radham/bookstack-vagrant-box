@@ -1,0 +1,44 @@
+---
+- name:        Remove the Old "www" Directory
+  file:        path=/var/www/
+               state=absent
+
+- name:        Create a New "www" Directory
+  file:        path=/var/www
+               state=directory
+
+- name:        Create the BookStack Project
+  command:     composer create-project --no-dev ssddanbrown/bookstack /var/www/
+
+- name:        Update BookStack Environment File
+  lineinfile:  dest=/var/www/.env
+               regexp={{ item.regexp }}
+               line={{ item.line }}
+  with_items:
+    - regexp:  DB_DATABASE=.+
+      line:    DB_DATABASE={{ mysql.database }}
+
+    - regexp:  DB_USERNAME=.+
+      line:    DB_USERNAME={{ mysql.username }}
+
+    - regexp:  DB_PASSWORD=.+
+      line:    DB_PASSWORD={{ mysql.password }}
+
+- name:        Perform BookStack's Composer Install
+  command:     php artisan migrate:refresh --force --seed
+  args:
+    chdir: /var/www/
+
+- name:        Create an "html" Directory Symlink
+  file:        src=/var/www/public
+               dest=/var/www/html
+               mode=0755
+               state=link
+               force=yes
+
+- name:        Set Permissions for BookStack Files
+  file:        path=/var/www/
+               owner=www-data
+               group=www-data
+               recurse=yes
+               state=directory
