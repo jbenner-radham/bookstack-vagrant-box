@@ -1,6 +1,6 @@
 BookStack Vagrant Box
 =====================
-A [Vagrant][VAGRANT] box for [BookStack][BOOKSTACK], a simple and free documentation platform.
+A [Vagrant][VAGRANT] box provisioned via [Ansible][ANSIBLE] for [BookStack][BOOKSTACK], a simple and free documentation platform.
 
 Usage
 -----
@@ -24,5 +24,6 @@ License
 -------
 The MIT License (Expat). See the [license file](LICENSE) for details.
 
+[ANSIBLE]: https://www.ansible.com/
 [BOOKSTACK]: https://www.bookstackapp.com/
 [VAGRANT]: https://www.vagrantup.com/

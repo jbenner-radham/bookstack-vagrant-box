@@ -15,3 +15,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Broken links in `README.md`.
+
+1.0.2 - 2016-04-17
+------------------
+### Added
+- Ansible requirement in `README.md`.
+
+### Fixed
+- Added missing `php7.0-xml` extension.
