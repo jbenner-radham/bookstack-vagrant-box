@@ -1,6 +1,6 @@
 BookStack Vagrant Box
 =====================
-A [Vagrant](VAGRANT) box for [BookStack](BOOKSTACK), a simple and free documentation platform.
+A [Vagrant][VAGRANT] box for [BookStack][BOOKSTACK], a simple and free documentation platform.
 
 Usage
 -----
