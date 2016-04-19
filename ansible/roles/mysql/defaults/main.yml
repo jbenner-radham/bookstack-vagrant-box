@@ -1,6 +1,6 @@
 ---
 mysql:
-  database: bookshelf
+  database: bookstack
   username: root
   password: ''
   host:     localhost
